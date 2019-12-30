@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import DashboardRoutes from "./DashboardRoutes";
 import Login from "./Login";
 import Register from "./Register";
+import RegisterAdmin from "./RegisterAdmin";
 import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
@@ -18,6 +19,7 @@ const Routes = () => {
         <Route path="/dash" render={() => <DashboardRoutes />} />
         <Route path="/login" render={() => <Login />} />
         <Route path="/register" render={() => <Register />} />
+        <Route path="/registeradmin" render={() => <RegisterAdmin />} />
         <Route path="/about" render={() => <About />} />
         <Route path="/contact" render={() => <Contact />} />
         <Route component={NoMatch} />
