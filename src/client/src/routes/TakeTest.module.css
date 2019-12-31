@@ -1,0 +1,54 @@
+.card{
+    width: 50%;
+    height: 320px;
+    margin-left:20%;
+    margin-top: 1%;
+  }
+
+  .title{
+    font-size:14;
+  }
+
+  .pos{
+    margin-bottom: 12,
+  }
+
+.button_margin{
+    color:'green';
+    margin-left: 50%
+}
+
+.button_margin_top{
+    margin-top: 20px;
+}
+
+.button_prev{
+    margin-top: 10%;
+    margin-left:25%
+}
+
+.button_next{
+    margin-left:60%;
+    margin-top:-2%
+}
+
+.margin_top{
+    margin-top: 50px;
+}
+
+.margin_button{
+    margin-left: 5px;
+}
+
+.button_margin_question{
+    float:right;
+    margin-right:3%;
+}
+
+.questionno_alignment{
+    margin-left: 20%;
+    margin-top:6%
+}
+.margin_counter{
+    margin-left: 78%;
+}
