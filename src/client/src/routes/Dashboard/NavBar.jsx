@@ -9,13 +9,10 @@ const NavBar = () => {
         <Link to="/dash">Dashboard</Link>
       </li>
       <li>
-        <Link to="/dash/settings">Settings</Link>
-      </li>
-      <li>
         <Link to="/dash/profile">Profile</Link>
       </li>
       <li>
-        <Link to="/dash/reports">Reports</Link>
+        <Link to="/dash/newtests">New Tests</Link>
       </li>
     </ul>
   );
