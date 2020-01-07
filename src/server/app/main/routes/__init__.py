@@ -1,4 +1,4 @@
-from app.main.routes.auth_controller import UserLogin, LogoutAPI, UserSignUp, FacebookAuthorize, GithubAuthorize
+from app.main.routes.auth_controller import UserLogin, LogoutAPI, UserSignUp, get_user_id, TeacherSignUp, StudentSignUp, TeacherLogin, StudentLogin
 from app.main import api
 
 def add_resources(app):
@@ -8,11 +8,17 @@ def add_resources(app):
     Args:
         app (object): object of Flask representing the app in context
     """
-    api.add_resource(UserLogin, '/login')
+    
+      
+    
+    api.add_resource(get_user_id, '/get_id')
+    api.add_resource(TeacherSignUp, '/teacher/register')
+    api.add_resource(StudentSignUp, '/student/register')
+    api.add_resource(TeacherLogin, '/teacher/login')
+    api.add_resource(StudentLogin, '/student/login')
+    api.add_resource(UserSignUp, '/admin/register')
+    api.add_resource(UserLogin, '/admin/login')
     api.add_resource(LogoutAPI, '/logout')
-    api.add_resource(UserSignUp, '/signup')
-    api.add_resource(FacebookAuthorize, '/facebook')
-    api.add_resource(GithubAuthorize, '/github')
 
 def register_blueprints(app):
     """
