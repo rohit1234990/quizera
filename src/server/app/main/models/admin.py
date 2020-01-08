@@ -6,7 +6,7 @@ import jwt
 from app.main.settings import key
 # from .. import db, flask_bcrypt, login_manage
 
-class User(db.Model):
+class Admin(db.Model):
     """
     [summary]
     
@@ -17,11 +17,7 @@ class User(db.Model):
     __tablename__ = "admin"
 
     admin_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    # public_id = db.Column(db.String(50), unique=True)
-    # username = db.Column(db.String(30), unique=True, nullable=False)
     admin_email = db.Column(db.String(100), unique=True, nullable=False)
-    # name = db.Column(db.String(150), nullable=False)
-    # admin = db.Column(db.Boolean, nullable=False, default=False)
     password_hash = db.Column(db.String(100))
 
     @property
@@ -64,11 +60,6 @@ class User(db.Model):
         """
         try:
             payload = jwt.decode(auth_token, key)
-            # is_blacklisted_token = BlacklistToken.check_blacklist(auth_token)
-            # if is_blacklisted_token:
-            #     return 'Token blacklisted. Please log in again.'
-            # else:
-            #     return payload['sub']
         except jwt.ExpiredSignatureError:
             return 'Signature expired. Please log in again.'
         except jwt.InvalidTokenError:
