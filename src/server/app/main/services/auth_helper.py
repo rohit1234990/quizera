@@ -1,4 +1,4 @@
-from app.main.models.admin import User
+from app.main.models.admin import Admin
 from app.main.models.teacher import Teacher
 from app.main.models.student import Student
 from app.main.settings import key
@@ -10,7 +10,7 @@ class Auth:
     def login_user(data):
         try:
             # fetch the user data
-            user = User.query.filter_by(admin_email=data.get('email')).first()
+            user = Admin.query.filter_by(admin_email=data.get('email')).first()
             if user and user.check_password(data.get('password')):
                 auth_token = user.encode_auth_token(user.admin_id)
                 if auth_token:
@@ -36,7 +36,7 @@ class Auth:
             return response_object, 500
 
     @staticmethod
-    def logout_user(data):        
+    def logout_user(data):
         if data:
             auth_token = data.split(" ")[1]
         else:
@@ -58,7 +58,8 @@ class Auth:
                 'status': 'fail',
                 'message': 'Provide a valid auth token.'
             }
-            return response_object, 
+            return response_object,
+
     @staticmethod
     def get_user_id(data):
         user = jwt.decode(data, key)
@@ -66,16 +67,18 @@ class Auth:
             admin_id = user["sub"]
             exits = User.query.get(int(admin_id))
             if exits:
-                return {"id" : admin_id}
+                return {"id": admin_id}
             else:
                 return False
         else:
             return False
+
     @staticmethod
     def login_teacher(data):
         try:
             # fetch the user data
-            user = Teacher.query.filter_by(teacher_email=data.get('email')).first()
+            user = Teacher.query.filter_by(
+                teacher_email=data.get('email')).first()
             if user and user.check_password(data.get('password')):
                 auth_token = user.encode_auth_token(user.teacher_id)
                 if auth_token:
@@ -104,7 +107,8 @@ class Auth:
     def login_student(data):
         try:
             # fetch the user data
-            user = Student.query.filter_by(student_email=data.get('email')).first()
+            user = Student.query.filter_by(
+                student_email=data.get('email')).first()
             if user and user.check_password(data.get('password')):
                 auth_token = user.encode_auth_token(user.student_id)
                 if auth_token:
@@ -127,6 +131,4 @@ class Auth:
                 'status': 'fail',
                 'message': 'Try again'
             }
-            return response_object, 500                
-        
-
+            return response_object, 500
