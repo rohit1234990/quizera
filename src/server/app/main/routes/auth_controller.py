@@ -1,6 +1,6 @@
 from flask import request
 from flask_restful import Resource
-from ..services.admin_service import save_new_user, get_all_users
+from ..services.admin_service import save_new_admin, get_all_users
 from ..services.teacher_service import save_new_teacher
 from ..services.student_service import save_new_student
 import requests
@@ -8,7 +8,7 @@ from app.main.services.auth_helper import Auth
 from app.main.utils.oauth_utils import github, oauth, facebook, g
 
 
-class UserSignUp(Resource):
+class AdminSignUp(Resource):
     """
     [summary]
     
@@ -18,7 +18,7 @@ class UserSignUp(Resource):
     def post(self):
         """Creates a new User """
         data = request.json
-        return save_new_user(data=data)
+        return save_new_admin(data=data)
 
 class TeacherSignUp(Resource):
     """
@@ -46,7 +46,7 @@ class StudentSignUp(Resource):
         return save_new_student(data=data)
 
 
-class UserLogin(Resource):
+class AdminLogin(Resource):
     """
         User Login Resource
     """
