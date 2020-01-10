@@ -2,6 +2,7 @@ from app.main import db
 from app.main.models.objective_type import ObjectiveType
 from flask import jsonify
 
+
 def delete_objective_type(data):
     """method to delete a question set in the test in model ObjectiveType
     Args:
