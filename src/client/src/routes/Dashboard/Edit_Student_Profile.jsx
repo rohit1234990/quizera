@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 
-export default class RecipeReviewCard extends React.Component {
+export default class EditTeacherProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,8 +26,8 @@ export default class RecipeReviewCard extends React.Component {
     const { email, name, gender, batch, section, phoneNumber } = this.state;
     return (
       <Grid container spacing={2}>
-        <Grid item md={3} />
-        <Grid item md={6} style={{ marginTop: "15px" }}>
+        <Grid item md={5} />
+        <Grid item md={2}>
           <Card>
             <CardHeader
               avatar={<Avatar alt={name} src="/static/images/avatar/1.jpg" />}
@@ -65,7 +65,7 @@ export default class RecipeReviewCard extends React.Component {
               <Typography style={{ margin: "15px" }}>
                 <TextField
                   required
-                  id="standard-required"
+                  id="standard_required"
                   label="Phone Number"
                   defaultValue={phoneNumber}
                 />
