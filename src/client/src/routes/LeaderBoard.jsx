@@ -20,17 +20,19 @@ const studentData = [
   {
     name: "amit",
     marks: 30
+  },
+  {
+    name: "madhu",
+    marks: 41
   }
 ];
 
 export default class LeaderBoard extends Component {
   constructor() {
     super();
+
     this.state = {
-      rankedStudents: [
-        { name: "rohit", rank: 1, marks: 35 },
-        { name: "mohit", rank: 2, marks: 30 }
-      ]
+      rankedStudents: []
     };
   }
 
@@ -46,9 +48,8 @@ export default class LeaderBoard extends Component {
 
   rank = data => {
     // rank will start from 1
-
     let rank = 1;
-    const rankedStudents = []; // holds final student names with their ranks
+    const rankedStudents = []; // holds final student names with their ranks and marks
     let runningMarks = data[0].marks;
 
     let counter = 0;
@@ -60,7 +61,7 @@ export default class LeaderBoard extends Component {
         rank += counter;
         counter = 1; // reset counter
       }
-      rankedStudents.push({ rank, name: data[i].name });
+      rankedStudents.push({ rank, name: data[i].name, marks: data[i].marks });
     }
 
     return rankedStudents;
@@ -68,7 +69,6 @@ export default class LeaderBoard extends Component {
 
   render() {
     const { rankedStudents } = this.state;
-    console.log(studentData);
     return (
       <Grid container justify="center">
         <Grid item sm={6}>
@@ -77,7 +77,7 @@ export default class LeaderBoard extends Component {
               style={{ backgroundColor: "#313F9F", color: "white" }}
               color="white"
               align="left"
-              title="LeaderBoard"
+              title="Leaderboard"
             />
             <CardContent>
               <Table aria-label="simple table">
@@ -89,13 +89,17 @@ export default class LeaderBoard extends Component {
                     <TableCell align="left">
                       <b>Name</b>
                     </TableCell>
+                    <TableCell align="left">
+                      <b>Marks</b>
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rankedStudents.map(({ name, rank }) => (
+                  {rankedStudents.map(({ name, rank, marks }) => (
                     <TableRow key={name}>
                       <TableCell align="left">{rank}</TableCell>
                       <TableCell align="left">{name}</TableCell>
+                      <TableCell align="left">{marks}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
