@@ -34,7 +34,37 @@ export default class LeaderBoard extends Component {
     };
   }
 
-  // componentDidMount() {}
+  componentDidMount = () => {
+    // initially sort students on marks
+    const data = studentData.sort((a, b) => b.marks - a.marks);
+    const rankedStudents = this.rank(data);
+
+    this.setState({
+      rankedStudents
+    });
+  };
+
+  rank = data => {
+    // rank will start from 1
+
+    let rank = 1;
+    const rankedStudents = []; // holds final student names with their ranks
+    let runningMarks = data[0].marks;
+
+    let counter = 0;
+    for (let i = 0; i < data.length; i += 1) {
+      if (runningMarks === data[i].marks) {
+        counter += 1;
+      } else {
+        runningMarks = data[i].marks;
+        rank += counter;
+        counter = 1; // reset counter
+      }
+      rankedStudents.push({ rank, name: data[i].name });
+    }
+
+    return rankedStudents;
+  };
 
   render() {
     const { rankedStudents } = this.state;
