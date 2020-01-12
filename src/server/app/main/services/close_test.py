@@ -4,11 +4,13 @@ from flask import jsonify
 import json
 
 def close_test(data):
-    """
+    """method to close the test in model Quizset
     Args:
-        data([type]): [description]
+        data (dict): data which needs to be changed in quizset table
+                    using Quizset model
     Returns:
-        [type]: [description]
+        dict, int: response object containing appropriate response based on the response from save changes,
+                    http response code specifying the success of updating data into table
     """
     test_id = data['test_id']
     query = db.session.query(quizset).filter_by(
