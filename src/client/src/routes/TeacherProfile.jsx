@@ -17,7 +17,7 @@ export default class TeacherProfile extends React.Component {
       gender: "abc",
       department: "Maths",
       location: "blr",
-      phoneNumber: "9876543210"
+      phoneNumber: "2345677444"
     };
   }
 
