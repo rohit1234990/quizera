@@ -9,6 +9,7 @@ import Contact from "./Contact";
 import Home from "./Home";
 import NavBarPublic from "./NavbarPublic";
 import NoMatch from "./NoMatch";
+import LeaderBoard from "./LeaderBoard";
 
 const Routes = () => {
   return (
@@ -22,6 +23,7 @@ const Routes = () => {
         <Route path="/registeradmin" render={() => <RegisterAdmin />} />
         <Route path="/about" render={() => <About />} />
         <Route path="/contact" render={() => <Contact />} />
+        <Route path="/leaderboard" render={() => <LeaderBoard />} />
         <Route component={NoMatch} />
       </Switch>
     </>
