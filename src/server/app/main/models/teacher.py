@@ -7,12 +7,18 @@ from app.main.settings import key
 # from .. import db, flask_bcrypt, login_manage
 
 class Teacher(db.Model):
-    """
-    [summary]
-    
+    """SQLAlchemy model for Teacher
+    containing fileds teacher_id ,teacher_name, teacher_email,password_hash,teacher_img, teacher_gender,teacher_department,teacher_location amd teacher_contact_number
+    teacher_id: unique identifier
+    teacher_name: name to be added to the database by teacher
+    teacher_email: email to be added to the database by teacher
+    password_hash: password which will be added to database after hasing
+    teacher_img: image to be added to the database to teacher
+    teacher_gender: gender to be added to the database to teacher
+    teacher_mobile: contact number to be aaded to the database to teacher
+
     Args:
-        UserMixin ([type]): [description]
-        db ([type]): [description]
+        db (object): SQLAlchemy object imported from main 
     """
     __tablename__ = 'teacher'
     teacher_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
