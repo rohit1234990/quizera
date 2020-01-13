@@ -7,12 +7,14 @@ from app.main.settings import key
 # from .. import db, flask_bcrypt, login_manage
 
 class Admin(db.Model):
-    """
-    [summary]
-    
+    """SQLAlchemy model for Admin
+    containing fileds  admin_id, admin_email,password_hash,password_hash
+    admin_id: unique identifier
+    admin_email: email to be added to the database by student
+    password_hash: password which will be added to database after hasing
+
     Args:
-        UserMixin ([type]): [description]
-        db ([type]): [description]
+        db (object): SQLAlchemy object imported from main 
     """
     __tablename__ = "admin"
 
