@@ -6,13 +6,20 @@ import jwt
 from app.main.settings import key
 
 class Student(db.Model):
-    """
-    [summary]
-    
+    """SQLAlchemy model for Student
+    containing fileds student_id ,student_name, student_email,password_hash,student_img, student_batch_id,student_gender,student_mobile amd student_section_id
+    student_id: unique identifier
+    student_name: name to be added to the database by student
+    student_email: email to be added to the database by student
+    password_hash: password which will be added to database after hasing
+    student_img: image to be added to the database to student
+    student_gender: gender to be added to the database to student
+    student_mobile: contact number to be aaded to the database to student
+
     Args:
-        UserMixin ([type]): [description]
-        db ([type]): [description]
+        db (object): SQLAlchemy object imported from main 
     """
+
     __tablename__ = 'student'
     student_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     student_name = db.Column(db.String(250), nullable=False)
