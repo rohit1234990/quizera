@@ -28,8 +28,8 @@ const studentData = [
 ];
 
 export default class LeaderBoard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       rankedStudents: []
