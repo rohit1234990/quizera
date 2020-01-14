@@ -19,6 +19,7 @@ const Routes = () => {
         <Route path="/" exact render={() => <Home />} />
         <Route path="/dash" render={() => <DashboardRoutes />} />
         <Route path="/login" render={() => <Login />} />
+        <Route path="/loginTeacher" render={() => <Login />} />
         <Route path="/register" render={() => <Register />} />
         <Route path="/registeradmin" render={() => <RegisterAdmin />} />
         <Route path="/about" render={() => <About />} />
