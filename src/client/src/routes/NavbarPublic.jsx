@@ -1,51 +1,52 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { Link } from "react-router-dom";
-import { Navbar, Nav } from "react-bootstrap";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 
-const NavBar = ({ location: { pathname } }) => {
-  if (pathname.startsWith("/dash")) return null;
-  return (
-    <Navbar
-      collapseOnSelect
-      expand="lg"
-      variant="dark"
-      style={{ backgroundColor: "#303F9F" }}
-    >
-      <Navbar.Brand>
-        <Link to="/" className="text-light" style={{ textDecoration: "none" }}>
-          QuizEra
-        </Link>
-      </Navbar.Brand>
-      <Navbar.Toggle />
+class NavBar extends React.Component {
+  useStyles = makeStyles(theme => ({
+    root: {
+      flexGrow: 1
+    },
+    menuButton: {
+      marginRight: theme.spacing(2)
+    },
+    title: {
+      flexGrow: 1
+    }
+  }));
 
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto" />
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-        <Nav className="mx-3 my-2 text-center">
-          <Link to="/dashboard" className="text-white ">
-            Dashboard
-          </Link>
-        </Nav>
-        <Nav className="mx-3 my-2 text-center">
-          <Link to="/register" className="text-white">
-            Logout
-          </Link>
-        </Nav>
+  render() {
+    const {
+      location: { pathname }
+    } = this.props;
+    if (pathname.startsWith("/dash")) return null;
 
-        <Nav className="mx-3 my-2 text-center">
-          <Link to="/register" className="text-white">
-            Register
-          </Link>
-        </Nav>
-        <Nav className="mx-3 my-2 text-center">
-          <Link to="/login" className="text-white">
-            Login
-          </Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  );
-};
+    return (
+      <div>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6">QuizEra</Typography>
+
+            <Button variant="contained" color="primary">
+              Login
+            </Button>
+            <Button variant="contained" color="primary">
+              Register
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
+}
 
 export default NavBar;
