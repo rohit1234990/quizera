@@ -65,6 +65,7 @@ export default class Login extends React.Component {
                 variant="contained"
                 color="primary"
                 type="submit"
+                onClick={this.handleSubmit}
               >
                 Login
               </Button>
