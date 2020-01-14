@@ -1,10 +1,15 @@
-import React from "react";
-import Card from "@material-ui/core/Card";
-import { Form } from "react-bootstrap";
-import { Button } from "@material-ui/core/";
-import TextField from "@material-ui/core/TextField";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardContent from "@material-ui/core/CardContent";
+import React from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -14,6 +19,7 @@ export default class Login extends React.Component {
       password: ""
     };
   }
+
 
   handleChange(e) {
     e.preventDefault();
@@ -28,46 +34,74 @@ export default class Login extends React.Component {
     console.log(this.state);
   }
 
-  render() {
-    return (
-      <div className="row justify-content-center">
-        <Card className="m-5 p-5">
-          <CardHeader
-            style={{ backgroundColor: "#313F9F" }}
-            className="p-2 pl-5 pr-5 text-white rounded-pill text-center"
-            title="Login"
+ render() {
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className="mt-5" style={{ 
+       display: 'flex',
+       marginTop:'100px',
+       flexDirection: 'column',
+       alignItems: 'center' }}>
+        <Avatar className="m-1" style={{ backgroundColor: "#f44336", }}>
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Login
+        </Typography>
+        <form className=" " style={{ width: '100%', // Fix IE 11 issue.
+                      marginTop: '20px'}} noValidate>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            onChange={e => this.handleChange(e)}
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
           />
-          <br />
-          <CardContent>
-            <Form>
-              <TextField
-                name="email"
-                onChange={e => this.handleChange(e)}
-                type="ematextil"
-                label="Enter Email"
-              />
-              <br />
-              <TextField
-                className="mt-3"
-                name="password"
-                onChange={e => this.handleChange(e)}
-                type="email"
-                label="Enter Password"
-              />
-              <br />
-
-              <Button
-                className="mt-5"
-                variant="contained"
-                color="primary"
-                type="submit"
-              >
-                Login
-              </Button>
-            </Form>
-          </CardContent>
-        </Card>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            onChange={e => this.handleChange(e)}
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            onClick={this.handlSubmit}
+            color="primary"
+            className=" " style={{ margin: (3, 0, 2) }}>
+            Login In
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link href="#" variant="body2" className="mt-5">
+                Forgot password?
+              </Link>
+            </Grid>
+            <Grid item className="mt-5">
+              <Link href="#" variant="body2">
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+          </Grid>
+        </form>
       </div>
-    );
-  }
+    </Container>
+  );
+}
 }
